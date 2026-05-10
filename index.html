@@ -1,37 +1,86 @@
-export default function AshleyHomepage() {
-  return (
-    <div
-      style={{
-        background: '#000',
-        color: '#b9b9b9',
-        fontFamily: 'Consolas, monospace',
-        minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        overflowX: 'hidden',
-        padding: '40px 20px',
-      }}
-    >
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '1400px',
-          textAlign: 'center',
-        }}
-      >
-        <pre
-          style={{
-            color: '#a855f7',
-            fontSize: '0.42rem',
-            lineHeight: '1.2',
-            overflowX: 'auto',
-            whiteSpace: 'pre',
-            marginBottom: '80px',
-            textShadow: '0 0 10px rgba(168, 85, 247, 0.4)',
-          }}
-        >
-{String.raw`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ashley Yield - FORSYTH</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #b9b9b9;
+      font-family: Consolas, monospace;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      overflow-x: hidden;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 1400px;
+      text-align: center;
+    }
+
+    pre {
+      color: #a855f7;
+      font-size: 8px;
+      line-height: 1.1;
+      white-space: pre;
+      overflow-x: auto;
+      margin-bottom: 60px;
+      text-shadow: 0 0 10px rgba(168,85,247,0.35);
+    }
+
+    .sub {
+      color: #a855f7;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 60px;
+      letter-spacing: 0.25em;
+      font-weight: normal;
+      margin: 0 0 30px;
+    }
+
+    .text {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #888;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    .text p {
+      margin-bottom: 20px;
+    }
+
+    .footer {
+      margin-top: 60px;
+      color: #a855f7;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    @media (max-width: 768px) {
+      pre { font-size: 4px; }
+      h1 { font-size: 36px; }
+      .text { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+<pre>
    ▄████████    ▄████████    ▄█    █▄     ▄█          ▄████████ ▄██   ▄        ▄██   ▄    ▄█     ▄████████  ▄█       ████████▄  
   ███    ███   ███    ███   ███    ███   ███         ███    ███ ███   ██▄      ███   ██▄ ███    ███    ███ ███       ███   ▀███ 
   ███    ███   ███    █▀    ███    ███   ███         ███    █▀  ███▄▄▄███      ███▄▄▄███ ███▌   ███    █▀  ███       ███    ███ 
@@ -40,44 +89,21 @@ export default function AshleyHomepage() {
   ███    ███          ███   ███    ███   ███         ███    █▄  ███   ███      ███   ███ ███    ███    █▄  ███       ███    ███ 
   ███    ███    ▄█    ███   ███    ███   ███▌    ▄   ███    ███ ███   ███      ███   ███ ███    ███    ███ ███▌    ▄ ███   ▄███ 
   ███    █▀   ▄████████▀    ███    █▀    █████▄▄██   ██████████  ▀█████▀        ▀█████▀  █▀     ██████████ █████▄▄██ ████████▀  
-                                         ▀                                                                 ▀                    
-        </pre>
+                                         ▀                                                                 ▀                          
+</pre>
 
-        <div
-          style={{
-            color: '#a855f7',
-            letterSpacing: '0.35em',
-            textTransform: 'uppercase',
-            fontSize: '0.8rem',
-            marginBottom: '40px',
-          }}
-        >
-          Independent Horror Developer
-        </div>
+    <div class="sub">Independent Horror Developer</div>
 
-        <h1
-          style={{
-            color: 'white',
-            fontSize: '5rem',
-            letterSpacing: '0.25em',
-            marginBottom: '30px',
-            fontWeight: 'normal',
-          }}
-        >
-          FORSYTH
-        </h1>
+    <h1>FORSYTH</h1>
 
-        <div
-          style={{
-            maxWidth: '800px',
-            margin: '0 auto',
-            lineHeight: '2',
-            fontSize: '1.1rem',
-            color: '#888',
-          }}
-        >
-          <p style={{ marginBottom: '25px' }}>
-            Forsyth is a psychological horror experience created by Ashley Yield.
-          </p>
+    <div class="text">
+      <p>Forsyth is a psychological horror experience created by Ashley Yield.</p>
+      <p>Forgotten streets. Broken signals. Empty buildings that remember your name.</p>
+      <p>Descend into a fractured world where every corridor hides another piece of the truth.</p>
+    </div>
 
-          <p style={{ marginBottom: '25px' }}>
+    <div class="footer">Coming Soon</div>
+
+  </div>
+</body>
+</html>
