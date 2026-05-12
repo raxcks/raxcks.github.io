@@ -1,109 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ashley Yield - FORSYTH</title>
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-      color: #b9b9b9;
-      font-family: Consolas, monospace;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ashley Yield - Music</title>
 
-    .wrap {
-      width: 100%;
-      max-width: 1400px;
-      text-align: center;
-    }
+<style>
+  body {
+    margin: 0;
+    background: #000;
+    color: #b9b9b9;
+    font-family: Consolas, monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-    pre {
-      color: #a855f7;
-      font-size: 8px;
-      line-height: 1.1;
-      white-space: pre;
-      overflow-x: auto;
-      margin-bottom: 60px;
-      text-shadow: 0 0 10px rgba(168,85,247,0.35);
-    }
+  /* subtle scanlines */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.03),
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+  }
 
-    .sub {
-      color: #a855f7;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      font-size: 12px;
-      margin-bottom: 30px;
-    }
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
+  }
 
-    h1 {
-      color: #fff;
-      font-size: 60px;
-      letter-spacing: 0.25em;
-      font-weight: normal;
-      margin: 0 0 30px;
-    }
+  /* glitch title */
+  h1 {
+    font-size: 64px;
+    letter-spacing: 0.3em;
+    color: #fff;
+    position: relative;
+    margin: 20px 0;
+    animation: glitch 2s infinite;
+  }
 
-    .text {
-      max-width: 800px;
-      margin: 0 auto;
-      color: #888;
-      line-height: 1.8;
-      font-size: 18px;
-    }
+  @keyframes glitch {
+    0% { text-shadow: 2px 0 #a855f7, -2px 0 #00ffff; }
+    20% { text-shadow: -2px -1px #a855f7, 2px 1px #00ffff; }
+    40% { text-shadow: 2px 2px #a855f7, -2px -2px #00ffff; }
+    60% { text-shadow: -1px 2px #a855f7, 1px -2px #00ffff; }
+    80% { text-shadow: 2px -2px #a855f7, -2px 2px #00ffff; }
+    100% { text-shadow: 2px 0 #a855f7, -2px 0 #00ffff; }
+  }
 
-    .text p {
-      margin-bottom: 20px;
-    }
+  .sub {
+    color: #a855f7;
+    letter-spacing: 0.4em;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
 
-    .footer {
-      margin-top: 60px;
-      color: #a855f7;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      font-size: 11px;
-    }
+  a {
+    color: #a855f7;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(168,85,247,0.4);
+  }
 
-    @media (max-width: 768px) {
-      pre { font-size: 4px; }
-      h1 { font-size: 36px; }
-      .text { font-size: 16px; }
-    }
-  </style>
+  a:hover {
+    color: #fff;
+  }
+
+  /* SoundCloud embed */
+  .player {
+    margin: 40px auto;
+    max-width: 700px;
+    filter: drop-shadow(0 0 10px rgba(168,85,247,0.4));
+  }
+
+  /* releases grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 60px;
+  }
+
+  .card {
+    border: 1px solid rgba(168,85,247,0.25);
+    padding: 20px;
+    background: rgba(255,255,255,0.02);
+    transition: 0.3s;
+  }
+
+  .card:hover {
+    transform: scale(1.03);
+    border-color: #a855f7;
+  }
+
+  .card h3 {
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: #888;
+  }
+
+  .footer {
+    margin-top: 60px;
+    color: #a855f7;
+    letter-spacing: 0.3em;
+    font-size: 11px;
+  }
+
+  /* floating noise flicker */
+  .flicker {
+    animation: flicker 3s infinite;
+  }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+    60% { opacity: 0.9; }
+  }
+
+  iframe {
+    border: none;
+  }
+</style>
 </head>
+
 <body>
-  <div class="wrap">
 
-<pre>
-   ▄████████    ▄████████    ▄█    █▄     ▄█          ▄████████ ▄██   ▄        ▄██   ▄    ▄█     ▄████████  ▄█       ████████▄  
-  ███    ███   ███    ███   ███    ███   ███         ███    ███ ███   ██▄      ███   ██▄ ███    ███    ███ ███       ███   ▀███ 
-  ███    ███   ███    █▀    ███    ███   ███         ███    █▀  ███▄▄▄███      ███▄▄▄███ ███▌   ███    █▀  ███       ███    ███ 
-  ███    ███   ███         ▄███▄▄▄▄███▄▄ ███        ▄███▄▄▄     ▀▀▀▀▀▀███      ▀▀▀▀▀▀███ ███▌  ▄███▄▄▄     ███       ███    ███ 
-▀███████████ ▀███████████ ▀▀███▀▀▀▀███▀  ███       ▀▀███▀▀▀     ▄██   ███      ▄██   ███ ███▌ ▀▀███▀▀▀     ███       ███    ███ 
-  ███    ███          ███   ███    ███   ███         ███    █▄  ███   ███      ███   ███ ███    ███    █▄  ███       ███    ███ 
-  ███    ███    ▄█    ███   ███    ███   ███▌    ▄   ███    ███ ███   ███      ███   ███ ███    ███    ███ ███▌    ▄ ███   ▄███ 
-  ███    █▀   ▄████████▀    ███    █▀    █████▄▄██   ██████████  ▀█████▀        ▀█████▀  █▀     ██████████ █████▄▄██ ████████▀  
-                                         ▀                                                                 ▀                          
-</pre>
+<!-- ambient audio (may require interaction depending on browser) -->
+<audio id="bg" autoplay loop muted>
+  <source src="https://cdn.pixabay.com/audio/2023/03/13/audio_7b6b3c4c3b.mp3" type="audio/mpeg">
+</audio>
 
-    <div class="sub">Independent Horror Developer</div>
+<div class="wrap">
 
-    <h1>FORSYTH</h1>
+  <div class="sub flicker">Independent Music Producer</div>
 
-    <div class="text">
-      <p>Forsyth is a psychological horror experience created by Ashley Yield.</p>
-      <p>Forgotten streets. Broken signals. Empty buildings that remember your name.</p>
-      <p>Descend into a fractured world where every corridor hides another piece of the truth.</p>
+  <h1>ASHLEY YIELD</h1>
+
+  <div class="sub">experimental / breakcore / atmospheric distortion</div>
+
+  <p>
+    New uploads:
+    <a href="https://soundcloud.com/ashleeys" target="_blank">
+      soundcloud.com/ashleeys
+    </a>
+  </p>
+
+  <!-- SoundCloud embed -->
+  <div class="player">
+    <iframe width="100%" height="166"
+      scrolling="no"
+      allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ashleeys&color=%23a855f7&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false">
+    </iframe>
+  </div>
+
+  <!-- releases grid -->
+  <div class="grid">
+
+    <div class="card">
+      <h3>Latest Upload</h3>
+      <p>Check SoundCloud for newest release / demo drop.</p>
     </div>
 
-    <div class="footer">Coming Soon</div>
+    <div class="card">
+      <h3>Unfinished Works</h3>
+      <p>Fragments of sound design and experimental sketches.</p>
+    </div>
+
+    <div class="card">
+      <h3>Noise Studies</h3>
+      <p>Distortion-heavy rhythm experiments and texture layering.</p>
+    </div>
+
+    <div class="card">
+      <h3>Archive</h3>
+      <p>Older uploads and deleted concepts preserved in fragments.</p>
+    </div>
 
   </div>
+
+  <div class="footer flicker">
+    SIGNAL LOSS // REBUILDING AUDIO IDENTITY
+  </div>
+
+</div>
+
+<script>
+  // optional: try to unmute audio after interaction (browser-friendly)
+  document.body.addEventListener("click", () => {
+    const audio = document.getElementById("bg");
+    audio.muted = false;
+    audio.volume = 0.2;
+  }, { once: true });
+</script>
+
 </body>
 </html>
