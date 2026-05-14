@@ -3,205 +3,421 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ashley Yield - Music</title>
+<title>DJ SEX PARTY — Ashley Yield</title>
 
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     margin: 0;
     background: #000;
-    color: #b9b9b9;
-    font-family: Consolas, monospace;
-    min-height: 100vh;
+    color: #d6d6d6;
     overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+    font-family: Consolas, monospace;
   }
 
-  /* subtle scanlines */
+  /* scanlines */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     background: repeating-linear-gradient(
       to bottom,
-      rgba(255,255,255,0.03),
-      rgba(255,255,255,0.03) 1px,
+      rgba(255,255,255,0.025),
+      rgba(255,255,255,0.025) 1px,
       transparent 1px,
       transparent 3px
     );
     pointer-events: none;
+    z-index: 999;
+  }
+
+  /* glow overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at top, rgba(255,0,255,0.18), transparent 50%),
+      radial-gradient(circle at bottom, rgba(255,0,170,0.12), transparent 60%);
+    pointer-events: none;
   }
 
   .wrap {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 20px;
+    max-width: 1400px;
+    margin: auto;
+    padding: 40px 20px 80px;
     text-align: center;
+    position: relative;
+    z-index: 2;
   }
 
-  /* glitch title */
+  .tiny {
+    color: #ff4df8;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 20px;
+    animation: flicker 4s infinite;
+  }
+
+  .cover {
+    width: 100%;
+    max-width: 850px;
+    border: 3px solid #ff00ea;
+
+    box-shadow:
+      0 0 25px rgba(255,0,234,0.5),
+      0 0 90px rgba(255,0,234,0.15);
+
+    margin-bottom: 40px;
+  }
+
   h1 {
-    font-size: 64px;
-    letter-spacing: 0.3em;
-    color: #fff;
-    position: relative;
-    margin: 20px 0;
+    margin: 0;
+
+    font-size: clamp(60px, 12vw, 180px);
+    line-height: 0.88;
+
+    color: #ff00ea;
+    text-transform: uppercase;
+
+    font-family:
+      "Helvetica Black",
+      "Arial Black",
+      Helvetica,
+      Arial,
+      sans-serif;
+
+    font-weight: 900;
+    letter-spacing: -0.05em;
+
+    text-shadow:
+      0 0 10px #ff00ea,
+      0 0 40px rgba(255,0,234,0.8);
+
     animation: glitch 2s infinite;
   }
 
-  @keyframes glitch {
-    0% { text-shadow: 2px 0 #a855f7, -2px 0 #00ffff; }
-    20% { text-shadow: -2px -1px #a855f7, 2px 1px #00ffff; }
-    40% { text-shadow: 2px 2px #a855f7, -2px -2px #00ffff; }
-    60% { text-shadow: -1px 2px #a855f7, 1px -2px #00ffff; }
-    80% { text-shadow: 2px -2px #a855f7, -2px 2px #00ffff; }
-    100% { text-shadow: 2px 0 #a855f7, -2px 0 #00ffff; }
-  }
+  .release {
+    margin-top: 30px;
 
-  .sub {
-    color: #a855f7;
-    letter-spacing: 0.4em;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-  }
-
-  a {
-    color: #a855f7;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(168,85,247,0.4);
-  }
-
-  a:hover {
     color: #fff;
+
+    font-size: clamp(18px, 2vw, 30px);
+
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+
+    font-family:
+      "Helvetica Black",
+      "Arial Black",
+      Helvetica,
+      Arial,
+      sans-serif;
   }
 
-  /* SoundCloud embed */
-  .player {
-    margin: 40px auto;
-    max-width: 700px;
-    filter: drop-shadow(0 0 10px rgba(168,85,247,0.4));
+  .date {
+    margin-top: 12px;
+
+    font-size: clamp(40px, 6vw, 90px);
+
+    color: #ff00ea;
+
+    font-family:
+      "Helvetica Black",
+      "Arial Black",
+      Helvetica,
+      Arial,
+      sans-serif;
+
+    font-weight: 900;
+
+    text-shadow:
+      0 0 15px rgba(255,0,234,0.7),
+      0 0 50px rgba(255,0,234,0.35);
   }
 
-  /* releases grid */
+  .desc {
+    max-width: 900px;
+
+    margin: 45px auto;
+
+    color: #9d9d9d;
+
+    line-height: 1.9;
+    font-size: 15px;
+  }
+
+  .links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    margin-top: 40px;
+  }
+
+  .links a {
+    padding: 15px 24px;
+
+    border: 1px solid rgba(255,0,234,0.45);
+
+    color: #ff00ea;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    letter-spacing: 0.2em;
+
+    transition: 0.25s;
+
+    background: rgba(255,255,255,0.02);
+
+    font-family:
+      "Helvetica Black",
+      "Arial Black",
+      Helvetica,
+      Arial,
+      sans-serif;
+  }
+
+  .links a:hover {
+    background: #ff00ea;
+    color: #000;
+
+    box-shadow:
+      0 0 20px rgba(255,0,234,0.6),
+      0 0 50px rgba(255,0,234,0.3);
+  }
+
   .grid {
+    margin-top: 70px;
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
     gap: 20px;
-    margin-top: 60px;
   }
 
   .card {
-    border: 1px solid rgba(168,85,247,0.25);
-    padding: 20px;
+    padding: 24px;
+
+    border: 1px solid rgba(255,0,234,0.18);
+
     background: rgba(255,255,255,0.02);
-    transition: 0.3s;
+
+    transition: 0.25s;
   }
 
   .card:hover {
-    transform: scale(1.03);
-    border-color: #a855f7;
+    transform: translateY(-5px) scale(1.02);
+
+    border-color: #ff00ea;
+
+    box-shadow:
+      0 0 20px rgba(255,0,234,0.2),
+      0 0 50px rgba(255,0,234,0.08);
   }
 
   .card h3 {
     color: #fff;
-    margin-bottom: 10px;
+
+    margin-bottom: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.15em;
+
+    font-family:
+      "Helvetica Black",
+      "Arial Black",
+      Helvetica,
+      Arial,
+      sans-serif;
   }
 
   .card p {
+    color: #8c8c8c;
+
     font-size: 14px;
-    color: #888;
+
+    line-height: 1.6;
   }
 
   .footer {
-    margin-top: 60px;
-    color: #a855f7;
-    letter-spacing: 0.3em;
+    margin-top: 80px;
+
+    color: #ff00ea;
+
     font-size: 11px;
+
+    letter-spacing: 0.4em;
+
+    animation: flicker 5s infinite;
   }
 
-  /* floating noise flicker */
-  .flicker {
-    animation: flicker 3s infinite;
+  @keyframes glitch {
+    0% {
+      transform: skew(0deg);
+      text-shadow: 3px 0 #ff00ea, -3px 0 #00ffff;
+    }
+
+    20% {
+      transform: skew(-2deg);
+      text-shadow: -4px -2px #ff00ea, 4px 2px #00ffff;
+    }
+
+    40% {
+      transform: skew(1deg);
+      text-shadow: 2px 2px #ff00ea, -2px -2px #00ffff;
+    }
+
+    60% {
+      transform: skew(-1deg);
+      text-shadow: -3px 2px #ff00ea, 3px -2px #00ffff;
+    }
+
+    80% {
+      transform: skew(2deg);
+      text-shadow: 4px -2px #ff00ea, -4px 2px #00ffff;
+    }
+
+    100% {
+      transform: skew(0deg);
+      text-shadow: 3px 0 #ff00ea, -3px 0 #00ffff;
+    }
   }
 
   @keyframes flicker {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-    60% { opacity: 0.9; }
+    0%,100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.65;
+    }
+
+    55% {
+      opacity: 0.95;
+    }
+
+    70% {
+      opacity: 0.75;
+    }
   }
 
-  iframe {
-    border: none;
+  audio {
+    display: none;
   }
 </style>
 </head>
 
 <body>
 
-<!-- ambient audio (may require interaction depending on browser) -->
 <audio id="bg" autoplay loop muted>
-  <source src="https://cdn.pixabay.com/audio/2023/03/13/audio_7b6b3c4c3b.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/audio/2022/10/25/audio_9467f7b6d7.mp3" type="audio/mpeg">
 </audio>
 
 <div class="wrap">
 
-  <div class="sub flicker">Independent Music Producer</div>
-
-  <h1>ASHLEY YIELD</h1>
-
-  <div class="sub">experimental / breakcore / atmospheric distortion</div>
-
-  <p>
-    New uploads:
-    <a href="https://soundcloud.com/ashleeys" target="_blank">
-      soundcloud.com/ashleeys
-    </a>
-  </p>
-
-  <!-- SoundCloud embed -->
-  <div class="player">
-    <iframe width="100%" height="166"
-      scrolling="no"
-      allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ashleeys&color=%23a855f7&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false">
-    </iframe>
+  <div class="tiny">
+    Ashley Yield Presents
   </div>
 
-  <!-- releases grid -->
+  <!-- album cover -->
+  <img src="https://files.catbox.moe/0k23mb.png" alt="DJ SEX PARTY Cover" class="cover">
+
+  <h1>DJ SEX PARTY</h1>
+
+  <div class="release">
+    New Studio Album
+  </div>
+
+  <div class="date">
+    COMING 05 / 31
+  </div>
+
+  <div class="desc">
+    hyperpop fragmentation, distorted rave pressure,
+    atmospheric breakcore collapse, pink neon overload,
+    synthetic emotional decay and corrupted club signal
+    transmissions from the ashleeys archive.
+  </div>
+
+  <div class="links">
+
+    <a href="https://soundcloud.com/ashleeys" target="_blank">
+      SoundCloud
+    </a>
+
+    <a href="#">
+      Presave Soon
+    </a>
+
+    <a href="#">
+      Tracklist Pending
+    </a>
+
+  </div>
+
   <div class="grid">
 
     <div class="card">
-      <h3>Latest Upload</h3>
-      <p>Check SoundCloud for newest release / demo drop.</p>
+      <h3>Studio Album</h3>
+
+      <p>
+        Full-length project built from distorted club edits,
+        ambient breakdowns and fragmented digital textures.
+      </p>
     </div>
 
     <div class="card">
-      <h3>Unfinished Works</h3>
-      <p>Fragments of sound design and experimental sketches.</p>
+      <h3>Release Date</h3>
+
+      <p>
+        Official transmission scheduled for 05/31.
+        Midnight upload sequence begins at launch.
+      </p>
     </div>
 
     <div class="card">
-      <h3>Noise Studies</h3>
-      <p>Distortion-heavy rhythm experiments and texture layering.</p>
+      <h3>Visual Identity</h3>
+
+      <p>
+        Heavy magenta glow, black void aesthetics,
+        oversized typography and corrupted rave imagery.
+      </p>
     </div>
 
     <div class="card">
-      <h3>Archive</h3>
-      <p>Older uploads and deleted concepts preserved in fragments.</p>
+      <h3>Archive Signal</h3>
+
+      <p>
+        Unreleased fragments, deleted edits and unfinished
+        concepts may appear after release.
+      </p>
     </div>
 
   </div>
 
-  <div class="footer flicker">
-    SIGNAL LOSS // REBUILDING AUDIO IDENTITY
+  <div class="footer">
+    DJ SEX PARTY // SYSTEM OVERLOAD // ASHLEEYS
   </div>
 
 </div>
 
 <script>
-  // optional: try to unmute audio after interaction (browser-friendly)
   document.body.addEventListener("click", () => {
     const audio = document.getElementById("bg");
+
     audio.muted = false;
-    audio.volume = 0.2;
+    audio.volume = 0.15;
   }, { once: true });
 </script>
 
